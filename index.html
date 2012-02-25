@@ -23,7 +23,7 @@
             function onDeviceReady() {
                 setTimeout(function(){
 					compassGo();
-				}, 250);
+				}, 1000);
             }
             
             // onSuccess: Get the current heading
@@ -32,7 +32,7 @@
                 $('.compass').css({"-webkit-transform": "rotate("+heading.magneticHeading+"deg)"});
 				setTimeout(function(){
 					compassGo();
-				}, 250);
+				}, 1000);
             }
             
             // onError: Failed to get the heading
@@ -46,10 +46,12 @@
 		
 		<style>
 			.compass {
-				-webkit-transition: all 0.5s ease-in-out;
-				height: 100px;
-				width: 10px;
-				background: red;
+				-webkit-transition: all 1s ease-in-out;
+				height: 494px;
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				background: url('wang.jpeg') no-repeat top left;
 			}
 		</style>
 		
@@ -57,6 +59,6 @@
 	</head>
 	<body>
 
-		<div class="compass">l</div>
+		<div class="compass"></div>
 	</body>
 </html>
