@@ -9,14 +9,7 @@
 		<script src="jqm.js" type="text/javascript"></script>
         
         <script type="text/javascript">
-            $(document).bind("pageinit",function(){
-                             alert('hey, welcome to this test app');
-                             
-                             $('.click').tap(function(){
-                                             $(this).animate({top: '+=30px'});
-                      });
-                             
-            });
+
             
             document.addEventListener("deviceready", onDeviceReady, false);
             
@@ -36,7 +29,7 @@
             // onSuccess: Get the current heading
             //
             function onSuccess(heading) {
-                $('.click').html(heading.magneticHeading);
+                $('.compass').css({"-webkit-transform": "rotate("+heading.magneticHeading+"deg)"});
 				setTimeout(function(){
 					compassGo();
 				}, 250);
@@ -52,28 +45,18 @@
         
 		
 		<style>
-		.header {
-			background: black;
-			color: white;
-			height: 40px;
-			width: 100%;
-			font-family: arial, verdana, helvetica;
-		}
-		
-		.click {
-			height: 20px;
-			width: 100%;
-			background: red;
-			color: green;
-			position: relative;
-		}
+			.compass {
+				-webkit-transition: all 0.5s ease-in-out;
+				height: 100px;
+				width: 10px;
+				background: red;
+			}
 		</style>
 		
 		
 	</head>
 	<body>
- 	<div class="header">This is my a test app</div>
-	<div class="click">Click me!</div>
 
+		<div class="compass">l</div>
 	</body>
 </html>
