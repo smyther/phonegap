@@ -21,7 +21,8 @@
  
 			function onSuccess(heading) {
 			    var element = document.getElementById('heading');
-			    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+			    element.innerHTML = 'Heading: ' + heading;
+				alert(heading.magneticHeading);
 			};
 
 			function onError() {
@@ -51,6 +52,11 @@
 			color: green;
 			position: relative;
 		}
+		
+		#heading {
+			background: orange;
+			color: blue;
+		}
 		</style>
 		
 		
@@ -58,7 +64,7 @@
 	<body>
  	<div class="header">This is my a test app</div>
 	<div class="click">Click me!</div>
-	<div id="heading"></div>
+	<div id="heading">default text</div>
 
 	</body>
 </html>
