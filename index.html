@@ -13,36 +13,24 @@
                              alert('hey, welcome to this test app');
                              
                              $('.click').tap(function(){
-                                             $(this).animate({top: '+=30px'});
-                      });
+                             	$(this).animate({top: '+=30px'});
+                      		 });
                              
             });
             
-            document.addEventListener("deviceready", onDeviceReady, false);
-            
-            // PhoneGap is ready
-            //
-            function onDeviceReady() {
-                navigator.compass.getCurrentHeading(onSuccess, onError);
-            }
-            
-            // onSuccess: Get the current heading
-            //
-            function onSuccess(heading) {
-                alert('Heading: ' + heading);
+ 
+			function onSuccess(heading) {
+			    var element = document.getElementById('heading');
+			    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+			};
 
-				var output = '';
-				for (property in heading) {
-				  output += property + ': ' + heading[property]+'; ';
-				}
-				alert(output);
-            }
-            
-            // onError: Failed to get the heading
-            //
-            function onError() {
-                alert('onError!');
-            }
+			function onError() {
+			    alert('onError!');
+			};
+
+			var options = { frequency: 3000 };  // Update every 3 seconds
+
+			var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
             </script>
         
         
@@ -70,6 +58,7 @@
 	<body>
  	<div class="header">This is my a test app</div>
 	<div class="click">Click me!</div>
+	<div id="heading"></div>
 
 	</body>
 </html>
