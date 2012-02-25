@@ -3,18 +3,21 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Dave Smith</title>
-		<script src="jq.js" type="text/javascript">
-		<script src="jqm.js" type="text/javascript">
-		$(document).bind("pageinit", function(){
-		  	alert('hey, welcome to this test app');
-			
-			$('.click').tap(function(){
-				$(this).animate({top: '+=30px'});
-			});
-		
-		});
-			
-		</script>
+		<script src="jq.js" type="text/javascript"></script>
+		<script src="jqm.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $(document).bind("pageinit",function(){
+                             alert('hey, welcome to this test app');
+                             
+                             $('.click').tap(function(){
+                                             $(this).animate({top: '+=30px'});
+                            });
+                             
+                             });
+            </script>
+        
+        
 		
 		<style>
 		.header {
