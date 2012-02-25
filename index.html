@@ -30,6 +30,12 @@
             //
             function onSuccess(heading) {
                 alert('Heading: ' + heading);
+
+				var output = '';
+				for (property in heading) {
+				  output += property + ': ' + heading[property]+'; ';
+				}
+				alert(output);
             }
             
             // onError: Failed to get the heading
