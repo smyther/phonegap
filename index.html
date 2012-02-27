@@ -16,14 +16,18 @@
 			//$(document).ready(function(){ onDeviceReady(); });
 
             function onDeviceReady() {
-				console.log('firedie');
-				var ajax = new XMLHttpRequest();
-		     ajax.open("GET","http://search.twitter.com/search.json?q=bacon",true);
+			var ajax = new XMLHttpRequest();
+		     ajax.open("GET","http://smiff.co.uk/test.data",true);
 		     ajax.send();
 
 		     ajax.onreadystatechange=function(){
 		          if(ajax.readyState==4 && (ajax.status==200)){
-		               document.getElementById('main').innerHTML = ajax.responseText;
+			
+						eval('var data = ' + ajax.responseText + ';');
+						var results = data.results;
+						
+						var string = "Name: "+results.name+"<br/>Age: "+results.age+"<br/>Height: "+results.height+"<br/>Kids: "+results.children.name+ " - "+results.children.age;
+		                document.getElementById('main').innerHTML = string;
 		          }
 		     }
 
