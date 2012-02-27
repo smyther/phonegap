@@ -25,11 +25,10 @@
 		          if(ajax.readyState==4 && (ajax.status==200)){
 			
 						eval('var data = ' + ajax.responseText + ';');
-						
-						
-						eval('var data = ' + wata + ';');
+												
 						var results = data.results;
 						var string = '';
+						
 						for(var i=0;i<results.length;i++){
 							string += "<br/>Name: " + results[i].name + "<br/>Age: " + results[i].age + "<br/>Height: " + results[i].height + "<br/>Kids: " + results[i].children.name + " - " + results[i].children.age + "<br/><br/>";
 						}
