@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
+		<title>Dave Smith</title>
+        <script src="phonegap.js" type="text/javascript"></script>
+        <script src="compass.js" type="text/javascript"></script>
+		<script src="jq.js" type="text/javascript"></script>
+		<script src="jqm.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+
+            
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            // PhoneGap is ready
+            //
+
+			function compassGo(){
+				navigator.compass.getCurrentHeading(onSuccess, onError);
+			}
+			
+            function onDeviceReady() {
+                setTimeout(function(){
+					compassGo();
+				}, 1000);
+            }
+            
+            // onSuccess: Get the current heading
+            //
+            function onSuccess(heading) {
+                $('.compass').css({"-webkit-transform": "rotate("+heading.magneticHeading+"deg)"});
+				setTimeout(function(){
+					compassGo();
+				}, 1000);
+            }
+            
+            // onError: Failed to get the heading
+            //
+            function onError() {
+                alert('onError!');
+            }
+            </script>
+        
+        
+		
+		<style>
+			.compass {
+				-webkit-transition: all 1s ease-in-out;
+				height: 247px;
+				width: 200px;
+				margin-left: auto;
+				margin-right: auto;
+				background: url('wang.jpeg') no-repeat top left;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+
+		<div class="compass"></div>
+	</body>
+</html>

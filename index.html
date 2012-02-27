@@ -12,53 +12,35 @@
 
             
             document.addEventListener("deviceready", onDeviceReady, false);
-            
-            // PhoneGap is ready
-            //
-
-			function compassGo(){
-				navigator.compass.getCurrentHeading(onSuccess, onError);
-			}
 			
+			//$(document).ready(function(){ onDeviceReady(); });
+
             function onDeviceReady() {
-                setTimeout(function(){
-					compassGo();
-				}, 1000);
+				console.log('firedie');
+				var ajax = new XMLHttpRequest();
+		     ajax.open("GET","http://search.twitter.com/search.json?q=bacon",true);
+		     ajax.send();
+
+		     ajax.onreadystatechange=function(){
+		          if(ajax.readyState==4 && (ajax.status==200)){
+		               document.getElementById('main').innerHTML = ajax.responseText;
+		          }
+		     }
+
             }
-            
-            // onSuccess: Get the current heading
-            //
-            function onSuccess(heading) {
-                $('.compass').css({"-webkit-transform": "rotate("+heading.magneticHeading+"deg)"});
-				setTimeout(function(){
-					compassGo();
-				}, 1000);
-            }
-            
-            // onError: Failed to get the heading
-            //
-            function onError() {
-                alert('onError!');
-            }
+
             </script>
         
         
 		
 		<style>
-			.compass {
-				-webkit-transition: all 1s ease-in-out;
-				height: 247px;
-				width: 200px;
-				margin-left: auto;
-				margin-right: auto;
-				background: url('wang.jpeg') no-repeat top left;
-			}
+
 		</style>
 		
 		
 	</head>
 	<body>
 
-		<div class="compass"></div>
+		<div id="main"></div>
 	</body>
 </html>
