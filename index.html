@@ -11,9 +11,9 @@
         <script type="text/javascript">
 
             
-            document.addEventListener("deviceready", onDeviceReady, false);
+            //document.addEventListener("deviceready", onDeviceReady, false);
 			
-			//$(document).ready(function(){ onDeviceReady(); });
+			$(document).ready(function(){ onDeviceReady(); });
 
             function onDeviceReady() {
 			var ajax = new XMLHttpRequest();
@@ -21,13 +21,20 @@
 		     ajax.send();
 
 		     ajax.onreadystatechange=function(){
+					$('.debug').append(ajax.readyState + ' ' + ajax.status );
 		          if(ajax.readyState==4 && (ajax.status==200)){
 			
 						eval('var data = ' + ajax.responseText + ';');
-						var results = data.results;
 						
-						var string = "Name: "+results.name+"<br/>Age: "+results.age+"<br/>Height: "+results.height+"<br/>Kids: "+results.children.name+ " - "+results.children.age;
-		                document.getElementById('main').innerHTML = string;
+						
+						eval('var data = ' + wata + ';');
+						var results = data.results;
+						var string = '';
+						for(var i=0;i<results.length;i++){
+							string += "<br/>Name: " + results[i].name + "<br/>Age: " + results[i].age + "<br/>Height: " + results[i].height + "<br/>Kids: " + results[i].children.name + " - " + results[i].children.age + "<br/><br/>";
+						}
+						
+		                document.getElementById('main').innerHTML = "Heres my string:<br/><br/>" + string;
 		          }
 		     }
 
@@ -46,5 +53,8 @@
 	<body>
 
 		<div id="main"></div>
+		<div class="debug">
+			<br/><br/>
+		</div>
 	</body>
 </html>
