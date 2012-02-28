@@ -11,28 +11,27 @@
         <script type="text/javascript">
 
             
-            document.addEventListener("deviceready", onDeviceReady, false);
+            //document.addEventListener("deviceready", onDeviceReady, false);
 			
-			//$(document).ready(function(){ onDeviceReady(); });
+			$(document).ready(function(){ onDeviceReady(); });
 
             function onDeviceReady() {
-	
+				
+				var transitionTime = 300;
+				
             //init 
                 $('#loading').hide();
                 $('#main').hide();
             
                 $('.start').tap(function(){
-                                $('#home').fadeOut(300, function(){
-                                                   $('#loading').fadeIn(800, function(){
-                                                                        $('#loading').fadeOut(800, function(){
-                                                                                                $('#main').fadeIn(300);
-                                                                                              });
-                                                                       
-                                                                        
-                                                                        });
-                                                   });
-                                
-                                });
+                	$('#home').fadeOut(transitionTime, function(){
+                		$('#loading').fadeIn(transitionTime, function(){
+                			$('#loading').fadeOut(transitionTime, function(){
+                				$('#main').fadeIn(transitionTime);
+                			});
+                		});
+                	});
+                });
             
                 
 			$('.click').tap(function(){
@@ -67,54 +66,70 @@
         
 		
 		<style>
+		
+		@font-face {
+		    font-family: 'ChunkFiveRegular';
+		    src: url('fonts/Chunkfive-webfont.eot');
+		    src: url('fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+		         url('fonts/Chunkfive-webfont.woff') format('woff'),
+		         url('fonts/Chunkfive-webfont.ttf') format('truetype'),
+		         url('fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+		    font-weight: normal;
+		    font-style: normal;
+
+		}
+
+		
             
             body, html {
                 background: #000000;
                 border: 0;
                 margin: 0;
-                padding; 0;
+                padding: 0;
+				color: #ffffff;
+				font-family: ChunkFiveRegular;
             }
-            
-			#main {
-				min-height: 100px;
-				width: 100%;
-				background: red;
-			}
-            
-            .start {
-                background: orange;
-                color: black;
-                font-weight: bold;
-            }
-            
-            .click {
-                background: purple;
-                color: white;
-                font-weight: bold;
-            }
-            
-            #loading {
-                width: 100%;
-                background: orange;
-                color: black;
-                position: absolute;
+
+            .page {
+	            position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 right: 0;
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0.26, rgb(209,209,209)),
+					color-stop(1, rgb(61,61,61))
+				);
+			}
+			            
+            #loading {
+                width: 100%;
+                color: black;
+				background: url('img/load.gif') no-repeat center center;
             }
             
             .button {
-                width: 200px;
+                width: 150px;
                 margin-left: auto;
                 margin-right: auto;
                 height: 30px;
-                -webkit-border-radius: 10px;
+                -webkit-border-radius: 20px;
                 text-align: center;
                 font-size: 20px;
                 line-height: 30px;
-                font-family: arial, verdana, helvetica, sans-serif;
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(36%,#828c95), color-stop(100%,#28343b));
+				text-shadow: 2px 2px 5px #000;
+				-webkit-text-shadow: 2px 2px 5px #000;
             }
+
+			h1 {
+				text-align: center;
+				text-shadow: 2px 2px 5px #000;
+				-webkit-text-shadow: 2px 2px 5px #000;
+			}
             
 
 		</style>
@@ -122,11 +137,11 @@
 		
 	</head>
 	<body>
-        <div id="loading">loading</div>
+        <div id="loading" class="page">looooading</div>
         
-        <div id="home">This is the home screen<br/><div class="button start">START</div></div>
+        <div id="home" class="page"><h1>SMITHS AWESOME APP</h1><br/><div class="button start">START</div></div>
         
-		<div id="main">
+		<div id="main" class="page">
             <input type="text" id="name" name="name" value="Name"/>
             <input type="text" id="address" name="address" value="Address"/>
             <div class="button click">BUTTON</div>
