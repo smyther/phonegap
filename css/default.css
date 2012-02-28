@@ -35,13 +35,6 @@ color-stop(0.26, rgb(209,209,209)),
 color-stop(1, rgb(61,61,61))
 );
 }
-
-#loading {
-    width: 100%;
-    color: black;
-background: url('../img/load.gif') no-repeat center center;
-}
-
 .button {
     width: 150px;
     margin-left: auto;

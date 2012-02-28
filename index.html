@@ -3,6 +3,25 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Dave Smith</title>
+		
+		<style>
+		
+		body, html {
+		    background: #000000;
+		    border: 0;
+		    margin: 0;
+		    padding: 0;
+			color: #ffffff;
+		}
+		
+		#loading {
+		    width: 100%;
+		    color: black;
+			background: url('img/load.gif') no-repeat center center;
+		}
+		
+		
+		</style>
         <script src="phonegap.js" type="text/javascript"></script>
         <script src="compass.js" type="text/javascript"></script>
 		<script src="jq.js" type="text/javascript"></script>
@@ -17,6 +36,9 @@
 
             function onDeviceReady() {
                 
+				$('#main').hide();
+				$('#home').hide();
+			
                 if (localStorage.getItem("theme") == null){
                     localStorage.setItem("theme","default");
                 }
@@ -27,14 +49,13 @@
                 fileref.setAttribute("href", "css/"+localStorage.getItem("theme")+".css");
                 document.getElementsByTagName("head")[0].appendChild(fileref);
                 
-                console.log(fileref);
+                var transitionTime = 300;
 				
-				var transitionTime = 300;
-				
-            //init 
-                $('#loading').hide();
-                $('#main').hide();
-            
+				$('#loading').fadeOut(700, function(){
+					$('#home').fadeIn(700);
+				});
+            	
+
                 $('.start').tap(function(){
                 	$('#home').fadeOut(transitionTime, function(){
                 		$('#loading').fadeIn(transitionTime, function(){
